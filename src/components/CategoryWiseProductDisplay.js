@@ -60,7 +60,7 @@ const CategoryWiseProductDisplay = ({ category, heading }) => {
             ) : (
                 data.map((product, index)=>{
                 return(
-                    <Link to={"/product/"+product?._id} className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow-md' onClick={scrollTop}>
+                    <Link to={"/product/"+product?._id} className='mt-4 md:mt-0 w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow-md' onClick={scrollTop}>
                         <div className='bg-slate-200 h-52 p-4 min-w-[120px] md:min-w-[145px] flex justify-center items-center'>
                             <img src={product.productImage[0]} className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply' alt=''/>
                         </div>
