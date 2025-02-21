@@ -1,5 +1,6 @@
 // const backendDomain = "https://stationary-ecommerce-backend-ten.vercel.app"
 const backendDomain = "https://ecommerce-backend-three-ashen.vercel.app" 
+//const backendDomain = "http://localhost:8000"
 
 const SummaryApi = {
     signUp : {

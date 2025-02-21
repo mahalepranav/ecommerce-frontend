@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
 import Context from '../context';
-import axios from 'axios';
 
 const Login = () => {
     const [ showPassword, setShowPassword] = useState(false);
@@ -31,39 +30,33 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            // Use axios for the request
-            const response = await axios({
+        try{
+            const dataResponse = await fetch(SummaryApi.signIn.url,{
                 method: SummaryApi.signIn.method,
-                url: SummaryApi.signIn.url,
+                credentials : "include",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                data: data,
-                withCredentials: true  
+                body : JSON.stringify(data)
             });
 
-            const dataApi = response.data;
+            const dataApi = await dataResponse.json();
 
             if (dataApi.success) {
                 toast.success(dataApi.message);
                 navigate('/');
                 fetchUserDetails();
                 fetchUserAddToCart();
-            }
-
-            if (dataApi.error) {
+            } else {
                 toast.error(dataApi.message);
             }
 
         } catch (error) {
-            // If there's an error in the request
-            toast.error('An error occurred, please try again');
-            console.error('Error during login:', error);
+            toast.error("An error occurred, please try again.");
+            console.error("Error during login:", error);
         }
     }
 
-    console.log("data login", data);    
 
   return (
     <section id='login'>
