@@ -32,6 +32,7 @@ const Header = () => {
         
         if(data.success){
             toast.success(data.message)
+            localStorage.removeItem("authToken");
             dispatch(setUserDetails(null))
             navigate("/")
         }

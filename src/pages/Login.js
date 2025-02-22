@@ -31,11 +31,13 @@ const Login = () => {
         e.preventDefault();
 
         try{
+            const authToken = localStorage.getItem("authToken");
             const dataResponse = await fetch(SummaryApi.signIn.url,{
                 method: SummaryApi.signIn.method,
                 credentials : "include",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${authToken}`
                 },
                 body : JSON.stringify(data)
             });
@@ -44,6 +46,7 @@ const Login = () => {
 
             if (dataApi.success) {
                 toast.success(dataApi.message);
+                localStorage.setItem("authToken", dataApi.token);
                 await fetchUserDetails();
                 await fetchUserAddToCart();
                 navigate('/');
