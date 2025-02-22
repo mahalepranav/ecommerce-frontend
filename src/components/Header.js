@@ -53,7 +53,7 @@ const Header = () => {
 
   return (
     <header className='h-16 shadow-md bg-white fixed w-full z-40'>
-        <div className='h-full container mx-auto flex items-center px-6 justify-between'>
+        <div className='h-full container mx-auto flex items-center justify-between px-4 md:px-6 flex-wrap'>
             <div>
                 <Link to={"/"}>
                     <img src={logo} alt='' style={{height: "60px", width: "120px"}} className='mx-4'/> 
@@ -67,7 +67,7 @@ const Header = () => {
                 </div>
             </div>
 
-            <div className='flex items-center gap-7 px-6'>
+            <div className='flex items-center gap-4 md:gap-7 px-4 md:px-6'>
                 
                 <div className='relative flex justify-center'>
 
