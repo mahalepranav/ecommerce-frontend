@@ -44,9 +44,10 @@ const Login = () => {
 
             if (dataApi.success) {
                 toast.success(dataApi.message);
+                await fetchUserDetails();
+                await fetchUserAddToCart();
                 navigate('/');
-                fetchUserDetails();
-                fetchUserAddToCart();
+
             } else {
                 toast.error(dataApi.message);
             }
